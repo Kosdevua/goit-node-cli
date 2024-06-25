@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { faker } from "@faker-js/faker";
 
-const contactsPath = path.join(process.cwd(), "src", "db", "contacts.json");
+const contactsPath = path.resolve("db", "contacts.json");
 
 export async function listContacts() {
   const data = await fs.readFile(contactsPath, "utf8");
