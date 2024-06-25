@@ -29,10 +29,10 @@ export async function removeContact(contactId) {
 export async function addContact(name, email, phone) {
   const contacts = await listContacts();
   const newContact = {
-    id: Date.now().toString(),
-    name,
-    email,
-    phone,
+    id: faker.string.uuid(),
+    name: name || faker.person.fullName(),
+    email: email || faker.internet.email(),
+    phone: phone || faker.phone.number(),
   };
   contacts.push(newContact);
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
